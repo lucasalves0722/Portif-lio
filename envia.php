@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $corpo_email .= "E-mail: $email\n";
     $corpo_email .= "Celular: $celular\n";
     $corpo_email .= "Mensagem: $mensagem\n";
-    $headers = "From: $email\n";
+    $headers = "From: 149004587+lucasalves0722@users.noreply.github.com.\n";
 
     // Envia o e-mail
     if (mail($destino, $assunto, $corpo_email, $headers)) {
