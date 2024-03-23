@@ -1,19 +1,27 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Coleta os dados do formulário
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $celular = $_POST['celular'];
+    $mensagem = $_POST['mensagem'];
 
-    $nome = addslashes($_POST['nome']);
-    $email = addcslashes($_POST['email']);
-    $celular = addcslashes($_POST['celulcar']);
+    // Aqui você pode adicionar o código para enviar um e-mail com os dados ou armazená-los em um banco de dados
 
-    $para = "lucasdeveloperalves@gmail.com";
-    $assunto = "Empresas - Portifólio";
+    // Exemplo de envio de e-mail
+    $destino = "lucasalves098messias@gemail.com";
+    $assunto = "Formulário de Contato";
+    $corpo_email = "Nome: $nome\n";
+    $corpo_email .= "E-mail: $email\n";
+    $corpo_email .= "Celular: $celular\n";
+    $corpo_email .= "Mensagem: $mensagem\n";
+    $headers = "From: $email\n";
 
-    $corpo = "Nome: ".$nome."\n"."E-mail: ".$email."\n"."Celular: ".$celular; 
-
-    $cabeca = "From: lucasalves098messias@gmail.com"."\n"."Reply-to: ".$email."\n"."X-Mailer:PHP/".phpversion();
-
-    if(mail($para,$assunto,$corpo,$cabeca)){
-        echo("E-mail enviado com sucesso!");
-    }else{
-        echo("Houve um erro ao enviar o email!")
+    // Envia o e-mail
+    if (mail($destino, $assunto, $corpo_email, $headers)) {
+        echo "E-mail enviado com sucesso!";
+    } else {
+        echo "Erro ao enviar o e-mail.";
     }
+}
 ?>
